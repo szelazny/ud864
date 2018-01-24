@@ -19,6 +19,12 @@
     <div id="map"></div>
     <script>
       var map;
+      
+      // Create a new blank array for all the listing markers
+      var markers = [];
+      
+      
+      
       function initMap() {
         // Constructor creates a new map - only center and zoom are required.
         map = new google.maps.Map(document.getElementById('map'), {
@@ -47,9 +53,29 @@
               {title: 'Chelsea Loft', location: {lat: 40.74444883, lng: -73.9949465}},
               {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}}
               ];
+         
+          var largeInfowindow =  new google.maps.InfoWindow();
         
-        
-        
+        //The following group uses the location array to create an array of markers on initialize
+          for (var i = 0; i < locations.length; i++) {
+          //Get the position from the location array
+          var position = locations[i].location;
+          var title = locations[i].title;
+          //Create a marker per location, and put into markers array
+          var marker = new google.maps.Marker({
+            map: map.
+            position: position,
+            title: title,
+            animation: google.maps.Animation.DROP,
+            id: 1
+         });
+
+        //Push the marker to our array of markers
+        markers.push(marker);            
+        //Create an onclick event to open an infowindow at each marker
+        marker.addListener('click', function() {
+        populateinfoWindow(this, laregInfoWindow);    
+        });    
         
       }
     </script>
