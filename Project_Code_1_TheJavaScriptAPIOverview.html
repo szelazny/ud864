@@ -86,7 +86,7 @@
 // on that markers position
 function populateInfoWindow(marker, infowindow) {
   //Check to make sure that the infowindow is not already opened in this marker.
-  if (infowindow.marker != marker {
+  if (infowindow.marker != marker) {
       infowindow.marker = marker;
       infowindow.setContent('<div>' marker.title + '</div>');
       infowindow.open(map, marker);
